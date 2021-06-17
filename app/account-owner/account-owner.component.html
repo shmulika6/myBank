@@ -1,0 +1,60 @@
+<div id="details">
+
+    <h1>
+        פרטי בעל החשבון
+    </h1>
+
+<span *ngIf="!edit">בעל החשבון: {{owner.name}}  </span> <br>
+
+<!--<img *ngIf="!owner.hasPicture" height=100px src="/assets/images/nopic.jpg" />
+<img *ngIf="owner.hasPicture" height=100px [src]="'/assets/images/'+owner.tz+'.jpg'" />-->
+
+<img height=100px [src]="'/assets/images/'+((owner.hasPicture)?owner.tz:'nopic')+'.jpg'"/>
+
+<div *ngIf="!edit">
+    <label>שם לקוח: 
+        <input disabled type=text id=name [value]="owner.name" />
+        
+    </label>
+    <br />
+    <label>כתובת: 
+        <input disabled type=text id=address [value]="owner.address" />
+    </label>
+    <br />
+    <label>יש תמונה: <input disabled type=checkbox id=hasPicture [checked]="owner.hasPicture" /> 
+    </label>
+    <br /><label>ת.ז.: 
+        <input type=text id=tz disabled [value]="owner.tz" />
+    </label> 
+    <br>
+    <button  (click)="startEdit()" style="background-color: aliceblue;">ערוך פרטי חשבון
+    </button>
+</div>
+
+<div *ngIf="edit">
+    <label>שם לקוח:
+        <input required type=text id=name [(ngModel)]="newOwner.name" />
+
+    </label>
+    <br />
+    <label>כתובת:
+        <input required type=text id=address [(ngModel)]="newOwner.address" />
+
+    </label>
+    <br />
+    <label>יש תמונה:
+        <input required type=checkbox id=hasPicture [(ngModel)]="newOwner.hasPicture" />
+
+    </label>
+    <br />
+    <label>ת.ז.:
+        <input type=text id=tz disabled [value]="newOwner.tz" />
+
+    </label>
+    <br>
+    <button  (click)="endEdit()" style="background-color: aliceblue;">
+        סיים עריכת פרטי חשבון</button>   &nbsp;
+    <button  (click)="cancelEdit()" style="background-color: aliceblue;">בטל עריכת פרטי חשבון</button> </div>
+</div>
+
+

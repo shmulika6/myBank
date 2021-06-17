@@ -1,0 +1,3 @@
+div {text-align: center;}
+input:valid {background-color: lightgreen;}
+input:invalid{background-color: red;}

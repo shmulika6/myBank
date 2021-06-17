@@ -1,0 +1,7 @@
+
+:valid{background-color: green;}
+:invalid{background-color: red;}
+#details{
+    direction: rtl;
+    text-align: center;
+}

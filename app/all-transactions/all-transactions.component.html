@@ -1,0 +1,27 @@
+<div *ngIf="transactionArray.length !== 0">
+    <h1>
+        טבלת תנועות
+    </h1>
+    <table dir="rtl" class="center">
+        <caption style="font-size: x-large;">פעולות בחשבון</caption>
+        <tr>
+            <th>מס"ד</th>
+            <th>תאריך פעולה</th>
+            <th>סוג הפעולה</th>
+            <th>סכום</th>
+            <th>יתרה רגעית</th>
+        </tr>
+        <tr [class.minusReka]='action.currentBalance < 0' *ngFor="let action of transactionArray; let i = index">
+            <td><a routerLink="{{'/SingleTransaction/' + i}}"><span>{{i+1}}</span></a></td>
+            <td>{{action["trnDate"] | date: 'dd/MM/yyyy' }}</td>
+            <td>{{transactionTypeNames[action.trnTyp]}}</td>
+            <td>{{action["amount"]|currency:'ILS'}}</td>
+            <td><bdo dir="ltr">{{action.currentBalance|currency:'ILS'}}</bdo></td>
+            
+        </tr>
+    </table>
+</div>
+
+<div style="text-align: center;" *ngIf="transactionArray.length == 0" class="zahov">
+    <p>לא נמצאו פעולות לחשבון</p>
+</div>
